@@ -1,38 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="myapp">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>myapp</title>
-  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Seongchan Lee, embedded systems and healthcare IoT portfolio." />
+  <meta name="theme-color" content="#020603" />
+  <meta property="og:title" content="Seongchan Lee / tirofina" />
+  <meta property="og:description" content="Embedded systems, healthcare IoT, and interactive sensor interfaces." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tirofina.github.io/" />
+  <title>Seongchan Lee / tirofina</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://github.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <canvas id="threeCanvas" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="site-header" data-elevate>
+    <a class="brand" href="#top" aria-label="Seongchan Lee home">
+      <span class="brand-mark" aria-hidden="true">SL</span>
+      <span>tirofina</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#projects">Projects</a>
+      <a href="#console">Console</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="kicker">Embedded Systems / Healthcare IoT / XR Interfaces</p>
+        <h1>Seongchan Lee builds sensor-driven software from circuit edge to screen.</h1>
+        <p class="hero-lede">
+          I work across Raspberry Pi displays, wearable strain and pressure sensors,
+          real-time data pipelines, and Unity-based interaction prototypes.
+        </p>
+        <div class="hero-actions" aria-label="Profile links">
+          <a class="btn primary" href="https://github.com/tirofina" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="mailto:seongchanno1@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel reveal" aria-label="Current focus">
+        <div class="panel-top">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>live research vector</span>
+        </div>
+        <div class="signal-readout">
+          <span>sensor hardware</span>
+          <span>data acquisition</span>
+          <span>calibration</span>
+          <span>real-time UI</span>
+          <span>interaction design</span>
+        </div>
+        <div class="meter-grid" aria-hidden="true">
+          <span style="--level: 84%"></span>
+          <span style="--level: 68%"></span>
+          <span style="--level: 91%"></span>
+          <span style="--level: 57%"></span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ticker" aria-label="Focus areas">
+      <div class="ticker-track">
+        <span>Raspberry Pi Zero 2 W</span>
+        <span>ESP32</span>
+        <span>UDP telemetry</span>
+        <span>Unity/XR</span>
+        <span>PyQt monitoring</span>
+        <span>KiCad prototypes</span>
+        <span>oneM2M</span>
+        <span>OpenCV</span>
+      </div>
+    </section>
+
+    <section id="projects" class="section-shell">
+      <div class="section-heading reveal">
+        <p class="kicker">Featured Work</p>
+        <h2>Projects with hardware signals, visual feedback, and field-ready tooling.</h2>
+      </div>
+
+      <div class="filter-bar reveal" role="tablist" aria-label="Project filter">
+        <button class="filter active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter" type="button" data-filter="embedded" role="tab" aria-selected="false">Embedded</button>
+        <button class="filter" type="button" data-filter="healthcare" role="tab" aria-selected="false">Healthcare</button>
+        <button class="filter" type="button" data-filter="xr" role="tab" aria-selected="false">XR</button>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal" data-tilt data-tags="embedded">
+          <div class="project-media matrix-media">
+            <img src="assets/img/animation-preview.png" alt="Matrix style animated heart preview on a small display" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>Raspberry Pi</span>
+              <span>Python</span>
+            </div>
+            <h3>RpiZero2WDisplay</h3>
+            <p>On-demand X11, touchscreen calibration, and pygame/OpenCV tooling for a Waveshare LCD on DietPi CLI mode.</p>
+            <a href="https://github.com/tirofina/RpiZero2WDisplay" target="_blank" rel="noreferrer">Open repository</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt data-tags="healthcare embedded xr">
+          <div class="project-media sensor-media" aria-hidden="true">
+            <div class="glove-map">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>ESP32</span>
+              <span>Unity</span>
+            </div>
+            <h3>BPNE StrainGauge</h3>
+            <p>Wearable glove sensor prototype with UDP streaming, PC monitoring, PCB assets, and Unity/XR visualization.</p>
+            <a href="https://github.com/tirofina/BPNE_StrainGauge" target="_blank" rel="noreferrer">Open repository</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt data-tags="xr embedded">
+          <div class="project-media twin-media" aria-hidden="true">
+            <div class="cube-field">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>oneM2M</span>
+              <span>C#</span>
+            </div>
+            <h3>Digital Twin Interworking</h3>
+            <p>Unity interworking experiment for synchronizing real-world IoT data with virtual representations.</p>
+            <a href="https://github.com/tirofina/oneM2M-Digital-Twin-Interworking_Unity" target="_blank" rel="noreferrer">Open repository</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tilt data-tags="embedded">
+          <div class="project-media matrix-media">
+            <img src="assets/img/heart-preview.png" alt="Static green heart display preview" loading="lazy" />
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>Mobius</span>
+              <span>IoT</span>
+            </div>
+            <h3>Mobius WALWAL</h3>
+            <p>Smart companion-care concept connecting IoT services with practical monitoring and support scenarios.</p>
+            <a href="https://github.com/tirofina/Mobius_WALWAL" target="_blank" rel="noreferrer">Open repository</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="console" class="section-shell console-section">
+      <div class="section-heading reveal">
+        <p class="kicker">Interactive Console</p>
+      </div>
+
+      <div class="console-grid reveal">
+        <div class="control-deck" aria-label="Signal controls">
+          <label>
+            <span>Sensor gain</span>
+            <input id="gain" type="range" min="10" max="100" value="72" />
+          </label>
+          <label>
+            <span>Noise filter</span>
+            <input id="filter" type="range" min="0" max="100" value="38" />
+          </label>
+          <label>
+            <span>XR feedback</span>
+            <input id="feedback" type="range" min="0" max="100" value="64" />
+          </label>
+        </div>
+
+        <div class="telemetry" aria-live="polite">
+          <div class="telemetry-header">
+            <span>UDP // 5005 + 5006</span>
+            <strong id="signalScore">72.4</strong>
+          </div>
+          <div class="wave-stack" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="telemetry-grid">
+            <p><span>latency</span><strong id="latencyValue">21 ms</strong></p>
+            <p><span>stream</span><strong id="streamValue">50 Hz</strong></p>
+            <p><span>confidence</span><strong id="confidenceValue">84%</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="section-shell">
+      <div class="section-heading reveal">
+        <p class="kicker">Toolbox</p>
+        <h2>Comfortable moving between embedded Linux, sensor firmware, and visual software.</h2>
+      </div>
+      <div class="stack-cloud reveal" aria-label="Technology stack">
+        <span>Python</span>
+        <span>C++</span>
+        <span>C#</span>
+        <span>Flutter</span>
+        <span>Unity</span>
+        <span>Raspberry Pi</span>
+        <span>ESP32</span>
+        <span>OpenCV</span>
+        <span>PyQt6</span>
+        <span>KiCad</span>
+        <span>Linux</span>
+        <span>UDP</span>
+      </div>
+    </section>
+
+    <section id="contact" class="section-shell contact-section">
+      <div class="contact-panel reveal">
+        <p class="kicker">Contact</p>
+        <h2>Let's connect hardware signals to useful interaction.</h2>
+        <div class="contact-actions">
+          <a class="btn primary" href="mailto:seongchanno1@gmail.com">seongchanno1@gmail.com</a>
+          <a class="btn secondary" href="https://github.com/tirofina" target="_blank" rel="noreferrer">@tirofina</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
