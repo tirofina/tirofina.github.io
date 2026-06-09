@@ -69,6 +69,49 @@ const knotMaterial = new THREE.MeshStandardMaterial({
 const knot = new THREE.Mesh(knotGeometry, knotMaterial);
 core.add(knot);
 
+const twinRig = new THREE.Group();
+twinRig.position.set(0, -0.25, 0.1);
+core.add(twinRig);
+
+const twinBoxGeometry = new THREE.BoxGeometry(1.9, 3.2, 1.25);
+const physicalMaterial = new THREE.MeshStandardMaterial({
+  color: 0x07180b,
+  emissive: 0x70ff8f,
+  emissiveIntensity: 0.72,
+  transparent: true,
+  opacity: 0.26,
+  wireframe: true,
+});
+const virtualMaterial = new THREE.MeshStandardMaterial({
+  color: 0x0a2210,
+  emissive: 0xc8ff5d,
+  emissiveIntensity: 0.58,
+  transparent: true,
+  opacity: 0.2,
+  wireframe: true,
+});
+const physicalTwin = new THREE.Mesh(twinBoxGeometry, physicalMaterial);
+physicalTwin.position.set(-2.05, 0, 0);
+twinRig.add(physicalTwin);
+
+const virtualTwin = new THREE.Mesh(twinBoxGeometry, virtualMaterial);
+virtualTwin.position.set(2.05, 0, 0);
+virtualTwin.scale.set(1.18, 1.18, 1.18);
+twinRig.add(virtualTwin);
+
+const syncMaterial = new THREE.LineBasicMaterial({
+  color: 0x70ff8f,
+  transparent: true,
+  opacity: 0.52,
+});
+[-1.15, -0.38, 0.38, 1.15].forEach((y) => {
+  const geometry = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(-1.05, y, 0.72),
+    new THREE.Vector3(1.05, y, 0.72),
+  ]);
+  twinRig.add(new THREE.Line(geometry, syncMaterial));
+});
+
 const ringMaterial = new THREE.MeshBasicMaterial({
   color: 0x70ff8f,
   transparent: true,
@@ -167,6 +210,9 @@ function animateThree(time = 0) {
   const speed = reducedMotion ? 0.08 : 1;
   knot.rotation.x = t * 0.22 * speed + pointer.y * 0.35;
   knot.rotation.y = t * 0.34 * speed + pointer.x * 0.55;
+  twinRig.rotation.y = Math.sin(t * 0.42) * 0.12 - pointer.x * 0.18;
+  twinRig.rotation.x = Math.sin(t * 0.31) * 0.06 + pointer.y * 0.08;
+  virtualTwin.scale.setScalar(1.14 + Math.sin(t * 1.8) * 0.04);
   core.rotation.y = Math.sin(t * 0.23) * 0.16 + pointer.x * 0.12;
   core.rotation.x = pointer.y * -0.08;
   tunnelGroup.rotation.z = t * 0.025 * speed;

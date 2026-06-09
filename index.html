@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Seongchan Lee, embedded systems and healthcare IoT portfolio." />
+  <meta name="description" content="Seongchan Lee, embedded systems, healthcare IoT, and digital twin portfolio." />
   <meta name="theme-color" content="#020603" />
   <meta property="og:title" content="Seongchan Lee / tirofina" />
-  <meta property="og:description" content="Embedded systems, healthcare IoT, and interactive sensor interfaces." />
+  <meta property="og:description" content="Embedded systems, healthcare IoT, digital twins, and interactive sensor interfaces." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tirofina.github.io/" />
   <title>Seongchan Lee / tirofina</title>
@@ -28,7 +28,7 @@
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="#projects">Projects</a>
-      <a href="#console">Console</a>
+      <a href="#console">Twin</a>
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -37,10 +37,11 @@
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy reveal">
-        <p class="kicker">Embedded Systems / Healthcare IoT / XR Interfaces</p>
+        <p class="kicker">Embedded Systems / Healthcare IoT / Digital Twins</p>
         <h1>Seongchan Lee.</h1>
         <p class="hero-lede">
-            I develop wearable and embedded sensing systems for real-time interaction.
+          I develop wearable and embedded sensing systems that connect telemetry,
+          calibration, and Unity/XR scenes into responsive digital twins.
         </p>
         <div class="hero-actions" aria-label="Profile links">
           <a class="btn primary" href="https://github.com/tirofina" target="_blank" rel="noreferrer">GitHub</a>
@@ -48,17 +49,17 @@
         </div>
       </div>
 
-      <aside class="hero-panel reveal" aria-label="Current focus">
+      <aside class="hero-panel reveal" aria-label="Digital twin pipeline">
         <div class="panel-top">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>live research vector</span>
+          <span>digital twin pipeline</span>
         </div>
         <div class="signal-readout">
-          <span>sensor hardware</span>
-          <span>data acquisition</span>
-          <span>calibration</span>
-          <span>real-time UI</span>
-          <span>interaction design</span>
+          <span>physical device</span>
+          <span>sensor telemetry</span>
+          <span>calibration model</span>
+          <span>virtual twin state</span>
+          <span>feedback loop</span>
         </div>
         <div class="meter-grid" aria-hidden="true">
           <span style="--level: 84%"></span>
@@ -73,7 +74,9 @@
       <div class="ticker-track">
         <span>Raspberry Pi Zero 2 W</span>
         <span>ESP32</span>
+        <span>Digital Twin</span>
         <span>UDP telemetry</span>
+        <span>Model sync</span>
         <span>Unity/XR</span>
         <span>PyQt monitoring</span>
         <span>KiCad prototypes</span>
@@ -85,13 +88,14 @@
     <section id="projects" class="section-shell">
       <div class="section-heading reveal">
         <p class="kicker">Featured Work</p>
-        <h2>Projects with hardware signals, visual feedback, and field-ready tooling.</h2>
+        <h2>Projects that connect physical signals to virtual state.</h2>
       </div>
 
       <div class="filter-bar reveal" role="tablist" aria-label="Project filter">
         <button class="filter active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
         <button class="filter" type="button" data-filter="embedded" role="tab" aria-selected="false">Embedded</button>
         <button class="filter" type="button" data-filter="healthcare" role="tab" aria-selected="false">Healthcare</button>
+        <button class="filter" type="button" data-filter="twin" role="tab" aria-selected="false">Digital Twin</button>
         <button class="filter" type="button" data-filter="xr" role="tab" aria-selected="false">XR</button>
       </div>
 
@@ -111,7 +115,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-tilt data-tags="healthcare embedded xr">
+        <article class="project-card reveal" data-tilt data-tags="healthcare embedded xr twin">
           <div class="project-media sensor-media" aria-hidden="true">
             <div class="glove-map">
               <span></span><span></span><span></span><span></span><span></span>
@@ -123,12 +127,12 @@
               <span>Unity</span>
             </div>
             <h3>BPNE StrainGauge</h3>
-            <p>Wearable glove sensor prototype with UDP streaming, PC monitoring, PCB assets, and Unity/XR visualization.</p>
+            <p>Wearable glove sensor prototype with UDP streaming, PC monitoring, PCB assets, and Unity/XR twin visualization.</p>
             <a href="https://github.com/tirofina/BPNE_StrainGauge" target="_blank" rel="noreferrer">Open repository</a>
           </div>
         </article>
 
-        <article class="project-card reveal" data-tilt data-tags="xr embedded">
+        <article class="project-card reveal" data-tilt data-tags="xr embedded twin">
           <div class="project-media twin-media" aria-hidden="true">
             <div class="cube-field">
               <i></i><i></i><i></i><i></i><i></i><i></i>
@@ -140,7 +144,7 @@
               <span>C#</span>
             </div>
             <h3>Digital Twin Interworking</h3>
-            <p>Unity interworking experiment for synchronizing real-world IoT data with virtual representations.</p>
+            <p>Unity interworking experiment for synchronizing physical IoT state with a virtual scene.</p>
             <a href="https://github.com/tirofina/oneM2M-Digital-Twin-Interworking_Unity" target="_blank" rel="noreferrer">Open repository</a>
           </div>
         </article>
@@ -164,28 +168,36 @@
 
     <section id="console" class="section-shell console-section">
       <div class="section-heading reveal">
-        <p class="kicker">Interactive Console</p>
+        <p class="kicker">Twin Sync</p>
+        <h2>Physical telemetry mirrored into a live twin.</h2>
       </div>
 
       <div class="console-grid reveal">
-        <div class="control-deck" aria-label="Signal controls">
+        <div class="control-deck" aria-label="Digital twin synchronization controls">
           <label>
-            <span>Sensor gain</span>
+            <span>Physical signal</span>
             <input id="gain" type="range" min="10" max="100" value="72" />
           </label>
           <label>
-            <span>Noise filter</span>
+            <span>Sync fidelity</span>
             <input id="filter" type="range" min="0" max="100" value="38" />
           </label>
           <label>
-            <span>XR feedback</span>
+            <span>Twin feedback</span>
             <input id="feedback" type="range" min="0" max="100" value="64" />
           </label>
+          <div class="twin-flow" aria-hidden="true">
+            <span>device</span>
+            <i></i>
+            <span>telemetry</span>
+            <i></i>
+            <span>twin</span>
+          </div>
         </div>
 
         <div class="telemetry" aria-live="polite">
           <div class="telemetry-header">
-            <span>UDP // 5005 + 5006</span>
+            <span>oneM2M // UDP // Unity</span>
             <strong id="signalScore">72.4</strong>
           </div>
           <div class="wave-stack" aria-hidden="true">
@@ -195,8 +207,8 @@
           </div>
           <div class="telemetry-grid">
             <p><span>latency</span><strong id="latencyValue">21 ms</strong></p>
-            <p><span>stream</span><strong id="streamValue">50 Hz</strong></p>
-            <p><span>confidence</span><strong id="confidenceValue">84%</strong></p>
+            <p><span>state rate</span><strong id="streamValue">50 Hz</strong></p>
+            <p><span>twin match</span><strong id="confidenceValue">84%</strong></p>
           </div>
         </div>
       </div>
@@ -205,7 +217,7 @@
     <section id="stack" class="section-shell">
       <div class="section-heading reveal">
         <p class="kicker">Toolbox</p>
-        <h2>Comfortable moving between embedded Linux, sensor firmware, and visual software.</h2>
+        <h2>Comfortable moving between embedded Linux, sensor firmware, telemetry, and twin scenes.</h2>
       </div>
       <div class="stack-cloud reveal" aria-label="Technology stack">
         <span>Python</span>
@@ -213,6 +225,7 @@
         <span>C#</span>
         <span>Flutter</span>
         <span>Unity</span>
+        <span>Digital Twin</span>
         <span>Raspberry Pi</span>
         <span>ESP32</span>
         <span>OpenCV</span>
@@ -226,7 +239,7 @@
     <section id="contact" class="section-shell contact-section">
       <div class="contact-panel reveal">
         <p class="kicker">Contact</p>
-        <h2>Let's connect hardware signals to useful interaction.</h2>
+        <h2>Let's connect physical systems to live virtual state.</h2>
         <div class="contact-actions">
           <a class="btn primary" href="mailto:seongchanno1@gmail.com">seongchanno1@gmail.com</a>
           <a class="btn secondary" href="https://github.com/tirofina" target="_blank" rel="noreferrer">@tirofina</a>
